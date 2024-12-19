@@ -213,6 +213,32 @@ Run example scripts:
 
 Outputs will be written in `/sample_data_out`
 
+## Running with Docker
+
+### Build the Docker image
+
+To build the Docker image, run the following command (make sure you're located at the root of the project):
+
+```bash
+docker build -t ict-facekit .
+```
+
+### Run the Docker container
+
+To run the container, use the following command:
+
+```bash
+docker run -it --rm --name ict-facekit-container -v "$(pwd)/sample_data_out:/app/sample_data_out" ict-facekit
+```
+
+In this command:
+
+- The container is run in interactive mode (`-it`), allowing you to see the output of the scripts.
+- The `--rm` flag ensures the container is removed after it exits.
+- The volume mapping `-v "$(pwd)/sample_data_out:/app/sample_data_out"` saves the output of the example scripts in a directory on the host machine (`sample_data_out`), outside of the container.
+
+The two example scripts will be executed, and the results will be saved in the host machine's volume.
+
 ## Publications
 
 ### Learning Formation of Physically Based Face Attributes
